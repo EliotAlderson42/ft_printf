@@ -6,7 +6,7 @@
 /*   By: yhouari <yhouari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 06:17:36 by yhouari           #+#    #+#             */
-/*   Updated: 2020/11/29 21:47:42 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/05 11:12:05 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <stdio.h>
 
 void	x_types(va_list *arg_list);
+void	p_types(va_list *arg_list);
 
 void	ft_putchar(char c)
 {
@@ -91,8 +92,8 @@ int	find_index(char *tab, char c)
 
 int	ft_printf(const char *src, ...)
 {
-	char tabIndex[5] = {'d', 'c', 's', 'x', 0};
-	void (*tabFunctions[4])(va_list *) = {nbr_function, charactere_function, str_function, x_types};
+	char tabIndex[6] = {'d', 'c', 's', 'x', 'p', 0};
+	void (*tabFunctions[5])(va_list *) = {nbr_function, charactere_function, str_function, x_types, p_types};
 	va_list arg_list;
 	int i;
 	int tmp;
@@ -120,9 +121,9 @@ int main()
 	int nbr = 21;
 	char c = 'y';
 	char *str = "saint-denis";
-	ft_printf("%x", 42);
+	ft_printf("%p*\n", str);
 	
 	//nbr = printf("%i %c %s", 43, c, str);
-	printf("%x", 4294967295);
+	printf("%p/", str);
 	return (0);
 }

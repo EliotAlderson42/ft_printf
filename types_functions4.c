@@ -20,14 +20,29 @@ void	aff_number(int nb)
 	}
 }
 
+
+
+long int define_negative(long int nb)
+{
+	long int nb2;
+	if (nb < 0)
+	{
+		nb *= -1;
+		nb2 = (4294967295 - nb + 1);
+		return (nb2);
+	}
+	return(nb);
+}
+
 void x_types(va_list *arg_list)
 {
-	int nb;
-	int nb2;
+	unsigned int nb;
+	long int nb2;
 	int i;
 	int cmpt;
-
-	nb = va_arg(*arg_list, int);
+	
+	nb2 = va_arg(*arg_list, int);
+	nb = define_negative(nb2);
 	nb2 = 1;
 	i = 1;
 	while (nb2 < nb && (nb2 * 16) <= nb)
@@ -47,4 +62,3 @@ void x_types(va_list *arg_list)
 		nb2 /= 16;
 	}
 }
-
