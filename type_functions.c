@@ -6,7 +6,7 @@
 /*   By: yhouari <yhouari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 06:17:36 by yhouari           #+#    #+#             */
-/*   Updated: 2021/02/05 11:12:05 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/14 18:42:02 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,9 +121,9 @@ int main()
 	int nbr = 21;
 	char c = 'y';
 	char *str = "saint-denis";
-	ft_printf("%p*\n", str);
+	//ft_printf("%p*\n", str);
 	
 	//nbr = printf("%i %c %s", 43, c, str);
-	printf("%p/", str);
+	printf("%u/", -10);
 	return (0);
 }
