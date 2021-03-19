@@ -1,16 +1,40 @@
 #include <stdarg.h>
 #include <unistd.h>
 
-void	putunnbr(unsigned int nbr)
+int ft_atoi(char *str)
 {
-	int nb2;
 	int i;
-	char *res[11];
+	int nb;
 
-	nb2 = nbr;
 	i = 0;
-	res[11] = '\0';
+	nb = 0;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		nb = nb * 10 + (str[i] - 48);
+		i++;
+	}
+	return (nb);
+}
 
+int	pad_zero(char *str)
+{
+	int i;
+	int j;
+	char *nb;
+
+	i = 0;
+	j = 0;
+	nb = 0;
+	while (str[i] < 'a' && str[i] > 'z' || str[i] < 'A' && str[i] > 'Z')
+	{
+		nb[j] = str[i];
+		i++;
+		j++;
+	}
+	j = ft_atoi(nb);
+	while ((j - 1) > 0)
+		write(1, '0', 1);
+	return (i);
 }
 
 void	u_types(va_list *arg_list)
