@@ -1,5 +1,9 @@
 #include <stdarg.h>
 #include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+void	ft_putnbr(long int nb);
 
 int ft_atoi(char *str)
 {
@@ -19,13 +23,15 @@ int ft_atoi(char *str)
 int	pad_zero(char *str)
 {
 	int i;
-	int j;
-	char *nb;
+	long int j;
+	char nb[10];
+	char c;
 
 	i = 0;
 	j = 0;
-	nb = 0;
-	while (str[i] < 'a' && str[i] > 'z' || str[i] < 'A' && str[i] > 'Z')
+	c = '0';
+	//nb = malloc(sizeof(char) * 10);
+	while (str[i] >= '0' && str[i] <= '9')
 	{
 		nb[j] = str[i];
 		i++;
@@ -33,7 +39,35 @@ int	pad_zero(char *str)
 	}
 	j = ft_atoi(nb);
 	while ((j - 1) > 0)
-		write(1, '0', 1);
+	{	
+		write(1, &c, 1);
+		j--;
+	}
+	return (i);
+}
+
+int	tab_space(char *str)
+{
+	int i;
+	long int j;
+	char nb[10];
+	char c;
+
+	i = 0;
+	j = 0;
+	c = ' ';
+	while(str[i] >= '0' && str[i] <= '9')
+	{
+		nb[j] = str[i];
+		i++;
+		j++;
+	}
+	j = ft_atoi(nb);
+	while((j - 1) > 0)
+	{
+		write(1, &c, 1);
+		j--;
+	}
 	return (i);
 }
 

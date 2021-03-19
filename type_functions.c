@@ -6,7 +6,7 @@
 /*   By: yhouari <yhouari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 06:17:36 by yhouari           #+#    #+#             */
-/*   Updated: 2021/02/14 18:42:02 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/19 16:39:00 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 void	x_types(va_list *arg_list);
 void	p_types(va_list *arg_list);
+int	pad_zero(char *str);
+int	tab_space(char *str);
 
 void	ft_putchar(char c)
 {
@@ -90,7 +92,7 @@ int	find_index(char *tab, char c)
 }
 
 
-int	ft_printf(const char *src, ...)
+int	ft_printf(char *src, ...)
 {
 	char tabIndex[6] = {'d', 'c', 's', 'x', 'p', 0};
 	void (*tabFunctions[5])(va_list *) = {nbr_function, charactere_function, str_function, x_types, p_types};
@@ -104,6 +106,11 @@ int	ft_printf(const char *src, ...)
 	{
 		if (src[i] == '%')
 		{
+			tmp = find_index(tabIndex, src[i + 1]);
+			if (tmp == -1)
+			{
+				i += tab_space(src + 1);
+			}
 			tmp = find_index(tabIndex, src[i + 1]);
 			if (tmp != -1)
 				(*tabFunctions[tmp])(&arg_list);
@@ -121,9 +128,8 @@ int main()
 	int nbr = 21;
 	char c = 'y';
 	char *str = "saint-denis";
-	//ft_printf("%p*\n", str);
-	
+	printf("%.5di", 5);
 	//nbr = printf("%i %c %s", 43, c, str);
-	printf("%u/", -10);
+	//ft_printf("salut %5dsalut", 5);
 	return (0);
 }
